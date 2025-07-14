@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesticide Dose Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pesticide and Insecticide Dose Calculator</h1>
+            <div class="language-toggle">
+                <button id="lang-en" class="lang-button active">English</button>
+                <button id="lang-hi" class="lang-button">हिन्दी</button>
+            </div>
+        </header>
+
+        <section class="input-section">
+            <h2>Input</h2>
+            <div class="form-group">
+                <label for="crop-type">Crop Type:</label>
+                <select id="crop-type">
+                    <option value="">Select Crop</option>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="pest-disease">Disease/Pest:</label>
+                <select id="pest-disease">
+                    <option value="">Select Disease/Pest</option>
+                    <!-- Options will be populated by JavaScript based on crop selection -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="area">Area:</label>
+                <input type="number" id="area" step="0.01" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="area-unit">Area Unit:</label>
+                <select id="area-unit">
+                    <option value="acres">Acres</option>
+                    <option value="hectares">Hectares</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="output-unit">Desired Output Unit:</label>
+                <select id="output-unit">
+                    <option value="g/acre">g/acre</option>
+                    <option value="ml/acre">ml/acre</option>
+                    <option value="liter/acre">liter/acre</option>
+                    <option value="kg/acre">kg/acre</option>
+                    <option value="g/liter">g/liter</option>
+                    <option value="ml/liter">ml/liter</option>
+                    <option value="ppm">ppm</option>
+                    <!-- Add more units as needed -->
+                </select>
+            </div>
+
+            <button id="calculate-btn">Calculate</button>
+        </section>
+
+        <section class="output-section">
+            <h2>Output</h2>
+            <div id="results">
+                <p><strong>Recommended Chemical:</strong> <span id="chemical-name"></span></p>
+                <p><strong>Calculated Dose:</strong> <span id="calculated-dose"></span> <span id="dose-unit"></span></p>
+                <p><strong>Source:</strong> <span id="source"></span></p>
+                <p id="error-message" class="error"></p>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
